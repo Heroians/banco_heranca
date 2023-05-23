@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class App {
 
     static Scanner teclado = new Scanner(System.in);
-    static ContaBancaria conta;
+    static Conta conta;
 
     static Banco banco = new Banco("TADSBank");
 
@@ -83,7 +83,7 @@ public class App {
 
         Pessoa pessoa = banco.buscarCliente(cpf);
         if(pessoa != null){
-            conta = new ContaBancaria(agencia,numero,pessoa);
+            conta = new ContaCorrente(agencia,numero,pessoa, 0, 0);
 
             System.out.println("************");
             

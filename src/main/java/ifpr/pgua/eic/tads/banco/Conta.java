@@ -2,29 +2,27 @@ package ifpr.pgua.eic.tads.banco;
 
 //importações
 
-public class ContaBancaria{
+public abstract class Conta{
 
     //atributos
     private String agencia;
     private String numero;
-    private double saldo=0;
+    protected double saldo=0;
     private Pessoa cliente;
 
-
-
-    public ContaBancaria(String agencia, String numero, Pessoa cliente){
+    public Conta(String agencia, String numero, Pessoa cliente){
         this.agencia = agencia;
         this.numero = numero;
         this.cliente = cliente;
     }
 
-    public ContaBancaria(String numero, Pessoa cliente){
+    public Conta(String numero, Pessoa cliente){
         this.agencia = "1234";
         this.numero = numero;
         this.cliente = cliente;
     }
 
-    public ContaBancaria(String agencia, String numero, Pessoa cliente, double saldo){
+    public Conta(String agencia, String numero, Pessoa cliente, double saldo){
         this.agencia = agencia;
         this.numero = numero;
         this.cliente = cliente;
@@ -87,7 +85,7 @@ public class ContaBancaria{
 
     }
 
-    String mostrarSaldo(){
+    String gerarExtrato(){
         String texto="";
 
         texto = "Agência: " + agencia +
@@ -96,6 +94,13 @@ public class ContaBancaria{
                 " Cliente: " + cliente.getNome();
 
         return texto;
+    }
+
+    public abstract String tipo();
+
+    //hook method
+    public String tipoCompleto(){
+        return "Este objeto é do tipo " +tipo();
     }
 
 }
